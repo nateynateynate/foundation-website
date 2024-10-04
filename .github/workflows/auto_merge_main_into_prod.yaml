@@ -5,14 +5,14 @@ on:
     types:
       - closed
     branches:
-      - workflow_test_main
+      - main
 
 jobs:
   make_pr_job:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      - run: "gh pr create -H workflow_test_main -B workflow_test_prod"
+      - run: "gh pr create -H prod -B main"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE: ${{ github.event.issue.html_url }}
