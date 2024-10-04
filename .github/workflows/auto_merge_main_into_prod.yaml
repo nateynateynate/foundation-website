@@ -11,7 +11,7 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      - run: gh pr create -H workflow_test_main -B workflow_test_prod
+      - run: "gh pr create -H workflow_test_main -B workflow_test_prod"
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         ISSUE: ${{ github.event.issue.html_url }}
