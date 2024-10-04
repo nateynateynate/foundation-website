@@ -2,7 +2,8 @@ name: Auto merge main to prod when a PR is merged to main
 run-name: Create PR to update prod with main.
 on:
   pull_request:
-    types: [ closed ]
+    types:
+      - closed
     branches:
       - workflow_test_main
 
@@ -12,6 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: "gh pr create -H workflow_test_main -B workflow_test_prod"
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        ISSUE: ${{ github.event.issue.html_url }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE: ${{ github.event.issue.html_url }}
